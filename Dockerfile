@@ -11,7 +11,11 @@ RUN apt-get update \
 
 FROM ubuntu
 
-COPY --from=builder /build/naiveproxy/src/out/Release/naive /usr/local/bin/naive
+COPY --from=builder /build/naiveproxy/src/out/Release/naive /usr/bin/naive
+
+RUN apt-get update \
+ && apt-get install -y libnss3 \
+ && rm -rf /var/lib/apt/lists/*
 
 ENTRYPOINT [ "naive" ]
-CMD [ "--listen=http://0.0.0.0:1080", "--padding" ]
+CMD [ "--listen=http://0.0.0.0:1080", "--padding", "--log" ]
