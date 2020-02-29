@@ -11,7 +11,7 @@ RUN apt-get update \
 
 FROM ubuntu
 
-COPY --from=builder /build/naiveproxy/src/out/Release/naive /usr/bin/naive
+COPY --from=builder /build/naiveproxy/src/out/Release/naive /usr/local/bin/naive
 
 RUN apt-get update \
  && apt-get install -y libnss3 \
