@@ -4,7 +4,7 @@ WORKDIR /build
 RUN apt-get update \
  && apt-get install -y git ninja-build python pkg-config libnss3-dev ccache  \
         curl unzip \
- && git clone --depth 1 https://github.com/klzgrad/naiveproxy.git \
+ && git clone -b v85.0.4183.83-3 --depth 1 https://github.com/klzgrad/naiveproxy.git \
  && cd naiveproxy/src \
  && ./get-clang.sh \
  && ./build.sh
@@ -18,4 +18,4 @@ RUN apt-get update \
  && rm -rf /var/lib/apt/lists/*
 
 ENTRYPOINT [ "naive" ]
-CMD [ "--listen=http://0.0.0.0:1080", "--padding", "--log" ]
+CMD [ "--listen=http://0.0.0.0:1080", "--log" ]
