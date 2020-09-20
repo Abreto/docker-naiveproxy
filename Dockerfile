@@ -1,4 +1,4 @@
-FROM ubuntu AS builder
+FROM ubuntu:18.04 AS builder
 
 WORKDIR /build
 RUN DEBIAN_FRONTEND=noninteractive \
