@@ -1,8 +1,8 @@
-FROM ubuntu:18.04 AS builder
+FROM ubuntu AS builder
 
 WORKDIR /build
 RUN DEBIAN_FRONTEND=noninteractive \
-    TZ=Asia/Beijing \
+    TZ=Asia/Chongqing \
     apt-get update \
  && apt-get install -y git ninja-build python pkg-config libnss3-dev ccache  \
         curl unzip \
